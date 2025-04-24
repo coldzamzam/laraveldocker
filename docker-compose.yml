@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: myproject_app
+    working_dir: /var/www
+    volumes:
+      - ./src:/var/www
+    ports:
+      - "8000:8000"
+    command: php artisan serve --host=0.0.0.0 --port=8000
+    networks:
+      - myproject
+
+#  webserver:
+#    image: nginx:alpine
+#    container_name: myproject_nginx
+#    ports:
+#      - "8080:80"
+#    volumes:
+#      - ./src:/var/www
+#      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+#    depends_on:
+#      - app
+#    networks:
+#      - myproject
+
+  db:
+    image: mysql:8.0
+    container_name: myproject_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: myproject
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: rootsecret
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - myproject
+
+networks:
+  myproject:
+
+volumes:
+  dbdata:
