@@ -13,7 +13,7 @@ This is a Laravel 10 project running on Docker, with MySQL and Nginx.
 1. **Clone this repo**
 ```bash
 sudo apt install git
-git clone https://github.com/your-username/laraveldocker.git
+git clone https://github.com/coldzamzam/laraveldocker.git
 cd laraveldocker
 ```
 
