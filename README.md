@@ -43,7 +43,19 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 ```
 
 4. ***Build & Start Containers***
+```
+sudo docker compose build
+sudo docker compose up -d
+```
 
+5. ***Open Localhost on Your Browser***
+```
+http://localhost:8000
+```
+OR
+```
+http://[yourIP]:8000
+```
 
 
 
