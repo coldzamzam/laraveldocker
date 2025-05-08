@@ -21,4 +21,11 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Set working directory
 WORKDIR /var/www/html
+
+# Copy application source code
+COPY . .
+
+# Install PHP dependencies using Composer
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
